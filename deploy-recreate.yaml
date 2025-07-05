@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: zack-deploy
+  name: zack-deploy
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: zack-deploy
+  template:
+    metadata:
+      labels:
+        app: zack-deploy
+    spec:
+      containers:
+      - image: httpd:alpine3.18
+        name: httpd
+  strategy:
+    type: Recreate
